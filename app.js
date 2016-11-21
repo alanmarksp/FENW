@@ -5,8 +5,16 @@ angular.module('padelUpmApp', [
 angular.module('padelUpmApp').config(['$locationProvider', '$routeProvider',
     function ($locationProvider, $routeProvider) {
 
-        $routeProvider.when('/', {
-            template: ''
-        }).otherwise('/');
+        $routeProvider
+            .when('/', {
+                templateUrl: 'templates/index.html'
+            })
+            .when('/register', {
+                template: 'register'
+            })
+            .when('/login', {
+                template: 'login'
+            })
+            .otherwise('/');
     }
 ]);
