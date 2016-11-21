@@ -48,8 +48,8 @@ body {
 }
 
 .hero-unit {
-    background-size: cover;
     background: url('../img/hero-image.jpg') center;
+    background-size: cover;
     height: 8em;
 }
 
