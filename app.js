@@ -9,10 +9,10 @@ angular.module('padelUpmApp').config(['$locationProvider', '$routeProvider',
             .when('/', {
                 templateUrl: 'templates/index.html'
             })
-            .when('/register', {
+            .when('/register/', {
                 template: 'register'
             })
-            .when('/login', {
+            .when('/login/', {
                 template: 'login'
             })
             .otherwise('/');
