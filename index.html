@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en"ng-app="padelUpmApp">
+<html lang="en" ng-app="padelUpmApp">
 <head>
     <meta charset="UTF-8">
     <title>Padle UPM</title>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link href="./css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
 
+<div ng-include="'templates/header.html'"></div>
+
+<section class="main-section">
     <div ng-view></div>
+</section>
+
+<div ng-include="'templates/footer.html'"></div>
 
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
