@@ -15,6 +15,15 @@ angular.module('padelUpmApp').config(['$locationProvider', '$routeProvider',
             .when('/register/', {
                 templateUrl: 'templates/register.html'
             })
+            .when('/services/', {
+                templateUrl: 'templates/services.html'
+            })
+            .when('/facilities/', {
+                templateUrl: 'templates/facilities.html'
+            })
+            .when('/reservations/', {
+                templateUrl: 'templates/reservations.html'
+            })
             .otherwise('/');
     }
 ]);
