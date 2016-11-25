@@ -7,6 +7,11 @@ body {
     flex-direction: column;
 }
 
+.container > .row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
 .margin-top-1 { margin-top: 1em; }
 .margin-top-2 { margin-top: 2em; }
 .margin-top-3 { margin-top: 3em; }
@@ -135,4 +140,11 @@ body {
     .col-img-container {
         height: 10vw;
     }
+}
+
+.form-title {
+    text-align: center;
+    background-color: #383838;
+    color: #FFFFFF;
+    padding: 0.3em;
 }
