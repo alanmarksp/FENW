@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Padle UPM</title>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/sweetalert/dist/sweetalert.css">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
@@ -15,9 +16,10 @@
 </section>
 
 <div ng-include="'templates/footer.html'"></div>
-
+<script src="https://www.google.com/recaptcha/api.js?onload=onLoadGoogleReCaptchaCallback&render=explicit"></script>
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./node_modules/sweetalert/dist/sweetalert-dev.js"></script>
 <script src="./node_modules/angular/angular.min.js"></script>
 <script src="./node_modules/angular-route/angular-route.min.js"></script>
 <script src="./app.js"></script>
