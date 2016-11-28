@@ -9,19 +9,27 @@
 </head>
 <body>
 
-<div ng-include="'templates/header.html'"></div>
+<div ng-include="'app/layout/top-nav.html'"></div>
 
 <section class="main-section">
     <div ng-view></div>
 </section>
 
-<div ng-include="'templates/footer.html'"></div>
+<div ng-include="'app/layout/footer.html'"></div>
 <script src="https://www.google.com/recaptcha/api.js?onload=onLoadGoogleReCaptchaCallback&render=explicit"></script>
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="./node_modules/sweetalert/dist/sweetalert-dev.js"></script>
 <script src="./node_modules/angular/angular.min.js"></script>
 <script src="./node_modules/angular-route/angular-route.min.js"></script>
-<script src="./app.js"></script>
+<script src="./app/app.module.js"></script>
+<script src="./app/app.routes.js"></script>
+<script src="./app/components/google-re-captcha.directive.js"></script>
+<script src="./app/layout/top-nav.controller.js"></script>
+<script src="./app/sections/login/login.controller.js"></script>
+<script src="./app/services/google-re-captcha.service.js"></script>
+<script src="./app/services/login.service.js"></script>
+<script src="./app/services/logout.service.js"></script>
+<script src="./app/services/token-service.service.js"></script>
 </body>
 </html>

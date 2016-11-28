@@ -82,6 +82,10 @@ body {
     display: unset;
 }
 
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
 .navbar i {
     margin-right: 0.5em;
 }
