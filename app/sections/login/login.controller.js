@@ -4,14 +4,15 @@
     angular.module('padelUpmApp')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['loginService'];
+    LoginController.$inject = ['loginService', 'toastr'];
 
-    function LoginController(loginService) {
+    function LoginController(loginService, toastr) {
         const vm = this;
 
         vm.username = '';
         vm.password = '';
         vm.reCaptcha = '';
+        vm.loading = false;
 
         vm.errorMessage = '';
 
@@ -27,13 +28,21 @@
                     password: vm.password
                 };
 
+                vm.loading = true;
+
                 loginService.performLogin(params)
                     .then(loginCallback);
             }
         }
 
         function loginCallback(errorMessage) {
-            vm.errorMessage = errorMessage;
+            vm.loading = false;
+            if (errorMessage) {
+                toastr.error(errorMessage, 'Error!!!');
+            }
+            else {
+                toastr.success('Inicio de sesión correcto!!!', 'Login');
+            }
         }
     }
 })();
