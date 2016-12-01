@@ -3,36 +3,45 @@
         <div class="col-sm-6 col-sm-offset-3">
             <h1 class="form-title">Login</h1>
             <div class="well padding-2">
-                <form novalidate name="loginForm" class="form-horizontal" ng-submit="loginCtrl.submitLogin(loginForm)">
+                <form novalidate name="loginCtrl.loginForm" class="form-horizontal" ng-submit="loginCtrl.submitLogin()">
                     <fieldset>
-                        <div class="alert alert-danger" role="alert" ng-show="loginCtrl.errorMessage">
-                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                            <span class="sr-only">Error:</span>
-                            {{loginCtrl.errorMessage}}
-                        </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input type="text" class="form-control" id="username" placeholder="Username"
-                                       ng-model="loginCtrl.username" ng-required="{true}">
+                                <input type="text"
+                                       class="form-control"
+                                       id="usernameOrEmail"
+                                       name="usernameOrEmail"
+                                       placeholder="Username/Email"
+                                       ng-model="loginCtrl.formFields.usernameOrEmail"
+                                       ng-required="true">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input type="password" class="form-control" id="password" placeholder="Password"
-                                       ng-model="loginCtrl.password" ng-required="{true}">
+                                <input type="password"
+                                       class="form-control"
+                                       id="password"
+                                       name="password"
+                                       placeholder="Password"
+                                       ng-model="loginCtrl.formFields.password"
+                                       ng-required="true">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <google-re-captcha class="g-recaptcha text-center" ng-model="loginCtrl.reCaptcha"
+                                <google-re-captcha class="g-recaptcha text-center"
+                                                   ng-model="loginCtrl.formFields.reCaptcha"
                                                    key="6LfuGg0UAAAAACCg6qOBZcn38FMd4WrBdxY6vFic"></google-re-captcha>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="text-center">
-                                <button ladda ng-model="loginCtrl.loading" type="submit"
-                                        class="btn btn-primary ladda-button" data-style="zoom-in"
-                                        ng-disabled="loginForm.$invalid">
+                                <button ladda
+                                        ng-model="loginCtrl.loading"
+                                        type="submit"
+                                        class="btn btn-primary ladda-button"
+                                        data-style="zoom-in"
+                                        ng-disabled="loginCtrl.loginForm.$invalid">
                                     <span class="ladda-label">Login</span>
                                 </button>
                             </div>
