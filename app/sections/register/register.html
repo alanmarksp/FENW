@@ -3,39 +3,111 @@
         <div class="col-sm-6 col-sm-offset-3">
             <h1 class="form-title">Register</h1>
             <div class="well padding-2">
-                <form class="form-horizontal">
+                <form novalidate
+                      name="registerCtrl.registerForm"
+                      class="form-horizontal"
+                      ng-submit="registerCtrl.submitRegister()">
                     <fieldset>
+                        <div class="form-group"
+                             ng-class="registerCtrl.getValidationFeedbackClass('username')">
+                            <div class="col-xs-12">
+                                <input type="text"
+                                       class="form-control"
+                                       id="username"
+                                       name="username"
+                                       placeholder="Username"
+                                       async-input-validator
+                                       url="http://salonso.etsisi.upm.es/miw_serv/padel/username.php"
+                                       ng-model="registerCtrl.formFields.username"
+                                       ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 0}}"
+                                       ng-required="true">
+                            </div>
+                            <span class="glyphicon form-control-feedback"
+                                  aria-hidden="true"
+                                  ng-show="registerCtrl.registerForm.username.$dirty"
+                                  ng-class="registerCtrl.getValidationFeedbackIconClass('username')"></span>
+                        </div>
+                        <div class="form-group"
+                             ng-class="registerCtrl.getValidationFeedbackClass('email')">
+                            <div class="col-xs-12">
+                                <input type="email"
+                                       class="form-control"
+                                       id="email"
+                                       name="email"
+                                       placeholder="Email"
+                                       async-input-validator
+                                       url="http://salonso.etsisi.upm.es/miw_serv/padel/email.php"
+                                       ng-model="registerCtrl.formFields.email"
+                                       ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 0}}"
+                                       ng-required="true">
+                            </div>
+                            <span class="glyphicon form-control-feedback"
+                                  aria-hidden="true"
+                                  ng-show="registerCtrl.registerForm.email.$dirty"
+                                  ng-class="registerCtrl.getValidationFeedbackIconClass('email')"></span>
+                        </div>
+                        <div class="form-group"
+                             ng-class="registerCtrl.getValidationFeedbackClass('password')">
+                            <div class="col-xs-12">
+                                <input type="password"
+                                       class="form-control"
+                                       id="password"
+                                       name="password"
+                                       placeholder="Password"
+                                       ng-model="registerCtrl.formFields.password"
+                                       ng-change="registerCtrl.validateConfirmPassword()"
+                                       ng-required="true">
+                            </div>
+                            <span class="glyphicon form-control-feedback"
+                                  aria-hidden="true"
+                                  ng-show="registerCtrl.registerForm.password.$dirty"
+                                  ng-class="registerCtrl.getValidationFeedbackIconClass('password')"></span>
+                        </div>
+                        <div class="form-group"
+                             ng-class="registerCtrl.getValidationFeedbackClass('passwordConfirmation')">
+                            <div class="col-xs-12">
+                                <input type="password"
+                                       class="form-control"
+                                       id="passwordConfirmation"
+                                       name="passwordConfirmation"
+                                       placeholder="Confirm Password"
+                                       ng-model="registerCtrl.formFields.passwordConfirmation"
+                                       ng-change="registerCtrl.validateConfirmPassword()"
+                                       ng-required="true">
+                            </div>
+                            <span class="glyphicon form-control-feedback"
+                                  aria-hidden="true"
+                                  ng-show="registerCtrl.registerForm.passwordConfirmation.$dirty"
+                                  ng-class="registerCtrl.getValidationFeedbackIconClass('passwordConfirmation')"></span>
+                        </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input type="text" class="form-control" id="username" placeholder="Username">
+                                <input type="date"
+                                       class="form-control"
+                                       id="birthDate"
+                                       name="birthDate"
+                                       placeholder="Birth Date"
+                                       date-to-timestamp
+                                       ng-model="registerCtrl.formFields.birthDate">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input type="email" class="form-control" id="email" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input type="password" class="form-control" id="password"
-                                       placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input type="password" class="form-control" id="password_confirmation"
-                                       placeholder="Confirm Password">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input type="date" class="form-control" id="birth_date"
-                                       placeholder="Birth Date">
+                                <google-re-captcha class="g-recaptcha text-center"
+                                                   ng-model="registerCtrl.formFields.reCaptcha"
+                                                   key="6LfuGg0UAAAAACCg6qOBZcn38FMd4WrBdxY6vFic"></google-re-captcha>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Register</button>
+                                <button ladda
+                                        ng-model="loginCtrl.loading"
+                                        type="submit"
+                                        class="btn btn-primary ladda-button"
+                                        data-style="zoom-in"
+                                        ng-disabled="registerCtrl.registerForm.$invalid">
+                                    Register
+                                </button>
                             </div>
                         </div>
                     </fieldset>

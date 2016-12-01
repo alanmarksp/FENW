@@ -13,10 +13,13 @@
             })
             .when('/login/', {
                 templateUrl: 'app/sections/login/login.html',
-                controller: 'LoginController as loginCtrl'
+                controller: 'LoginController',
+                controllerAs: 'loginCtrl'
             })
             .when('/register/', {
-                templateUrl: 'app/sections/register/register.html'
+                templateUrl: 'app/sections/register/register.html',
+                controller: 'RegisterController',
+                controllerAs: 'registerCtrl'
             })
             .when('/services/', {
                 templateUrl: 'app/sections/services/services.html'
