@@ -2,28 +2,33 @@
     'use strict';
 
     angular.module('padelUpmApp')
-        .factory('loginService', ['$http', '$location', 'tokenService', function ($http, $location, tokenService) {
-            return {
-                performLogin
-            };
+        .factory('loginService', loginService);
 
-            function performLogin(params) {
-                return $http({
-                    method: 'GET',
-                    url: 'http://salonso.etsisi.upm.es/miw_serv/padel/conexion.php',
-                    params: params
-                }).then(function (response) {
-                    const token = response.headers()['token'];
+    loginService.$inject = ['$http', 'tokenService'];
 
-                    if (token) {
-                        tokenService.setToken(token);
-                        $location.path('/');
-                        return '';
-                    }
-                    else {
-                        return response.data['errorMessage'];
-                    }
-                });
+    function loginService($http, tokenService) {
+        return {
+            performLogin
+        };
+
+        function performLogin(params) {
+            return $http({
+                method: 'GET',
+                url: 'http://salonso.etsisi.upm.es/miw_serv/padel/conexion.php',
+                params: params
+            }).then(handleResponse);
+        }
+
+        function handleResponse(response) {
+            const token = response.headers()['token'];
+
+            if (token) {
+                tokenService.setToken(token);
+                return '';
             }
-        }]);
+            else {
+                return response.data['errorMessage'];
+            }
+        }
+    }
 })();
