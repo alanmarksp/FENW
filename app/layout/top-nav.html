@@ -24,7 +24,7 @@
                 <li ng-class="{active: topNavCtrl.isActive('/facilities/')}">
                     <a ng-href="#facilities">Instalaciones</a>
                 </li>
-                <li ng-class="{active: topNavCtrl.isActive('/reservations/')}">
+                <li ng-class="{active: topNavCtrl.isActive('/reservations/')}" ng-if="topNavCtrl.isLoggedIn()">
                     <a ng-href="#reservations">Reservar</a>
                 </li>
             </ul>
