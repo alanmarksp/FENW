@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('padelUpmApp', [
-        'ngRoute'
+        'ngRoute',
+        'ui.bootstrap'
     ]);
 })();
