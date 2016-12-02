@@ -80,15 +80,28 @@
                                   ng-show="registerCtrl.registerForm.passwordConfirmation.$dirty"
                                   ng-class="registerCtrl.getValidationFeedbackIconClass('passwordConfirmation')"></span>
                         </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input type="date"
-                                       class="form-control"
-                                       id="birthDate"
-                                       name="birthDate"
-                                       placeholder="Birth Date"
-                                       date-to-timestamp
-                                       ng-model="registerCtrl.formFields.birthDate">
+                        <div class="form-group"
+                             ng-class="registerCtrl.getValidationFeedbackClass('birthDate')">
+                            <div class="col-md-12">
+                                <p class="input-group">
+                                    <input type="text"
+                                           class="form-control"
+                                           id="birthDate"
+                                           name="birthDate"
+                                           placeholder="Fecha de nacimiento"
+                                           date-to-timestamp
+                                           uib-datepicker-popup="{{'dd/MM/yyyy'}}"
+                                           is-open="registerCtrl.birthDatePopUp.isOpen"
+                                           close-text="Close"
+                                           ng-model="registerCtrl.formFields.birthDate"
+                                           ng-pattern="/^(\d{2})/(\d{2})/(\d{4})$/"/>
+                                    <span class="input-group-btn">
+                                        <button type="button"
+                                                class="btn"
+                                                ng-class="registerCtrl.getValidationFeedbackButtonClass('birthDate')"
+                                                ng-click="registerCtrl.openBirthDatePopUp()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
                             </div>
                         </div>
                         <div class="form-group">

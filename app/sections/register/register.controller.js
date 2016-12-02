@@ -22,10 +22,16 @@
 
         vm.loading = false;
 
+        vm.birthDatePopUp = {
+            isOpen: false
+        };
+
         vm.submitRegister = submitRegister;
         vm.validateConfirmPassword = validateConfirmPassword;
         vm.getValidationFeedbackClass = getValidationFeedbackClass;
         vm.getValidationFeedbackIconClass = getValidationFeedbackIconClass;
+        vm.getValidationFeedbackButtonClass = getValidationFeedbackButtonClass;
+        vm.openBirthDatePopUp = openBirthDatePopUp;
 
         function submitRegister() {
             if (vm.registerForm.$invalid) {
@@ -80,6 +86,24 @@
                     return 'glyphicon-remove';
                 }
             }
+        }
+
+        function getValidationFeedbackButtonClass(elementName) {
+            if (vm.registerForm[elementName].$dirty) {
+                if (vm.registerForm[elementName].$valid) {
+                    return 'btn-success';
+                }
+                else {
+                    return 'btn-danger';
+                }
+            }
+            else {
+                return 'btn-default';
+            }
+        }
+
+        function openBirthDatePopUp() {
+            vm.birthDatePopUp.isOpen = true;
         }
     }
 })();

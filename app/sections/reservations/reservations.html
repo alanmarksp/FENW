@@ -6,16 +6,30 @@
                       name="reservationsCtrl.reservationsForm"
                       class="form-horizontal"
                       ng-submit="reservationsCtrl.submitReservationDate()">
-                    <div class="form-group">
-                        <label for="reservationDate">Fecha de la reserva</label>
-                        <input type="date"
-                               class="form-control"
-                               id="reservationDate"
-                               name="reservationDate"
-                               placeholder="Fecha de la reserva"
-                               date-to-timestamp
-                               ng-model="reservationsCtrl.reservationDate"
-                               ng-required="true">
+                    <div class="form-group"
+                         ng-class="reservationsCtrl.getValidationFeedbackClass('reservationsDate')">
+                        <div class="col-md-12">
+                            <p class="input-group">
+                                <input type="text"
+                                       class="form-control"
+                                       id="reservationsDate"
+                                       name="reservationsDate"
+                                       placeholder="Fecha de Reserva"
+                                       date-to-timestamp
+                                       uib-datepicker-popup="{{'dd/MM/yyyy'}}"
+                                       is-open="reservationsCtrl.reservationsDatePopUp.isOpen"
+                                       close-text="Close"
+                                       ng-model="reservationsCtrl.formFields.reservationsDate"
+                                       ng-required="true"
+                                       ng-pattern="/^(\d{2})/(\d{2})/(\d{4})$/"/>
+                                <span class="input-group-btn">
+                                        <button type="button"
+                                                class="btn"
+                                                ng-class="reservationsCtrl.getValidationFeedbackButtonClass('reservationsDate')"
+                                                ng-click="reservationsCtrl.openReservationsDatePopUp()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                            </p>
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="text-center">
