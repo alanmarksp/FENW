@@ -1,9 +1,49 @@
 <section class="main-content margin-top-5 margin-bottom-5">
-    <div class="container in-construction">
+    <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                <i class="center-block text-center glyphicon glyphicon-warning-sign"></i>
-                <h2 class="text-center">En construcción</h2>
+            <div class="col-sm-6 col-sm-offset-3">
+                <form novalidate
+                      name="reservationsCtrl.reservationsForm"
+                      class="form-horizontal"
+                      ng-submit="reservationsCtrl.submitReservationDate()">
+                    <div class="form-group">
+                        <label for="reservationDate">Fecha de la reserva</label>
+                        <input type="date"
+                               class="form-control"
+                               id="reservationDate"
+                               name="reservationDate"
+                               placeholder="Fecha de la reserva"
+                               date-to-timestamp
+                               ng-model="reservationsCtrl.reservationDate"
+                               ng-required="true">
+                    </div>
+                    <div class="form-group">
+                        <div class="text-center">
+                            <button ladda
+                                    ng-model="loginCtrl.loading"
+                                    type="submit"
+                                    class="btn btn-primary ladda-button"
+                                    data-style="zoom-in"
+                                    ng-disabled="reservationsCtrl.reservationsForm.$invalid">
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <table class="table table-striped" ng-if="reservationsCtrl.availableCourts">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Pista</th>
+                        <th class="text-center">Hora</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="court in reservationsCtrl.availableCourts">
+                        <td class="text-center">{{court['courtId']}}</td>
+                        <td class="text-center">{{court['date']|date:'mediumTime'}}</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
