@@ -6,7 +6,6 @@
         return {
             restrict: 'A',
             require: 'ngModel',
-            scope: true,
             link
         };
 
